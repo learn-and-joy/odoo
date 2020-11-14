@@ -13,10 +13,6 @@ sudo apt install software-properties-common
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt install python3.7
 
-#4
-INSTALL DEPENDENCIES USING PIP3
-pip3 install Babel decorator docutils ebaysdk feedparser gevent greenlet html2text Jinja2 lxml Mako MarkupSafe mock num2words ofxparse passlib Pillow psutil psycogreen psycopg2 pydot pyparsing PyPDF2 pyserial python-dateutil python-openid pytz pyusb PyYAML qrcode reportlab requests six suds-jurko vatnumber vobject Werkzeug XlsxWriter xlwt xlrd
-
 #5
 sudo apt-get install -y npm
 sudo npm install -g less less-plugin-clean-css
@@ -57,9 +53,14 @@ git clone https://www.github.com/odoo/odoo --depth 1 --branch 12.0 --single-bran
 exit
 
 #11 install Python pachages
+cd odoo
+sudo pip3 install -r requirements.txt
 sudo apt-get install libpq-dev python-dev libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev libffi-dev 
-sudo pip install -r requirements.txt
-sudo pip install http://initd.org/psycopg/upload/psycopg2-2.7.3.1.dev0/psycopg2-2.7.3.1.dev0-cp27-cp27mu-manylinux1_x86_64.whl
+//sudo pip3 install http://initd.org/psycopg/upload/psycopg2-2.7.3.1.dev0/psycopg2-2.7.3.1.dev0-cp27-cp27mu-manylinux1_x86_64.whl
+
+or INSTALL DEPENDENCIES USING PIP3
+sudo pip3 install Babel decorator docutils ebaysdk feedparser gevent greenlet html2text Jinja2 lxml Mako MarkupSafe mock num2words ofxparse passlib Pillow psutil psycogreen psycopg2 pydot pyparsing PyPDF2 pyserial python-dateutil python-openid pytz pyusb PyYAML qrcode reportlab requests six suds-jurko vatnumber vobject Werkzeug XlsxWriter xlwt xlrd werkzeug
+
 
 #12 Create Odoo Log File
 sudo mkdir /var/log/odoo
@@ -140,3 +141,26 @@ $ source ~/odoo-12.0/bin/activate
 8. Install the Python dependencies of Odoo in virtualenv:
 
 $ pip3 install -r requirements.txt - here i get errors
+
+
+
+errors
+#1
+500 internal server error (Linux)
+
+OperationalError: FATAL: role "root" does not exist
+
+You find this error in file : /var/log/postgrsql/postgrsql-10-main.log (on linux system)
+
+The solution may be :
+
+    1- Open Terminal and enter => sudo su postgres
+    2- Enter password for postgres System user (if it is necessary)
+    3- createuser root -s
+    4- psql template1
+    5- alter role root with password 'yourpassword'; ( 0000 )
+    6- \q
+    7- exit
+    8- service odoo restart
+
+Now try again to localhost:8069
