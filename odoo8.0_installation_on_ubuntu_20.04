@@ -11,5 +11,6 @@ sudo python2 get-pip.py
 
 or
 
-Download using firefox
+Download using firefox from
 https://bootstrap.pypa.io/get-pip.py
+$ sudo python get-pip.py --default-timeout=100
