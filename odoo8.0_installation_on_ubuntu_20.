@@ -1,0 +1,15 @@
+odoo.8.0_installation_on_ubuntu_20.04.txt
+
+1# install python2
+$ sudo add-apt-repository universe
+$ sudo apt install python2
+
+
+install pip
+curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py
+sudo python2 get-pip.py
+
+or
+
+Download using firefox
+https://bootstrap.pypa.io/get-pip.py
